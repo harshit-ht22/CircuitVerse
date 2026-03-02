@@ -40,7 +40,7 @@
     <h6><%= form.label :grading_scale %></h6>
     <% if @assignment.new_record? %>
       <span><%= t("assignments.form.grade_scale_cant_change") %></span>
-      <% if Flipper.enabled?(:lms_integration, current_user) %>
+      <% if @assignment.fixed_grading_scale? %>
         <div class="lms-grade-fixed-message"> <!-- Operated by script -->
           <p>Grading Scale needs to be fixed at 1-100 for passing the grade back to LMS</a></p>
         </div>
