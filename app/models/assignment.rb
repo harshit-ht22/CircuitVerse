@@ -6,6 +6,9 @@ class Assignment < ApplicationRecord
     in: %w[percent],
     message: "needs to be fixed at 1-100 for passing the grade back to LMS"
   }, if: :lti_integrated?
+  def fixed_grading_scale?
+    lti_integrated?
+  end
   belongs_to :group
   has_many :projects, class_name: "Project", dependent: :nullify
 
