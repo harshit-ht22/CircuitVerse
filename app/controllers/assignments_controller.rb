@@ -57,7 +57,8 @@ class AssignmentsController < ApplicationController
     @assignment.deadline = 1.day.from_now
     @assignment.save
 
-    redirect_to edit_group_assignment_path(@group, @assignment)
+    redirect_to edit_group_assignment_path(@group, @assignment),
+            notice: "Assignment reopened successfully."
   end
 
   # Close assignment
@@ -143,7 +144,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to @group, notice: "Assignment was successfully deleted." }
+      format.html { redirect_to @group, notice: "Assignment deleted successfully." }
       format.json { head :no_content }
     end
   end
